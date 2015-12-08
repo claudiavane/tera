@@ -48,7 +48,7 @@ angular.module('starter', ['ionic','leaflet-directive', 'ngCordova', 'igTruncate
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html',
-          controller: 'EarlyAlertController'
+          controller: 'ControlsDrawController'
         }
       }
     })

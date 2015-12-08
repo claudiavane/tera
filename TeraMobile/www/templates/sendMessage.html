@@ -1,0 +1,77 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive">
+
+    <h1 class="title">Send Alert Message</h1>
+
+    <div class="buttons">
+      <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
+    </div>
+
+  </ion-header-bar>
+
+  <ion-content class="padding">
+
+    <form name="messageForm" ng-submit="smsPreview()">
+
+      <div class="list">
+
+        <label class="item item-input item-select" >
+          <span class="input-label">Message Type</span>
+          <select ng-model="circleMessage.messageType.name" >
+            <option ng-repeat="item in messageTypes" value="{{item.name}}" >
+               {{item.name}}
+            </option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select">
+          <span class="input-label">Priority</span>
+          <select ng-model="circleMessage.priority.name">
+            <option ng-repeat="i in priorities" value="{{i.name}}" >
+               {{i.name}}
+            </option>
+          </select>
+        </label>
+
+        <label class="item item-input">        
+          <textarea rows="4" placeholder="Write a message" ng-model="circleMessage.message" ng-minlength="1" ng-maxlength="160" required></textarea>
+        </label>
+
+        <!--<ion-item ng-repeat="item in operators" item="item">
+            <label class="checkbox checkbox-assertive">
+                <input type="checkbox" ng-click="clickItem(item); $event.stopPropagation();" ng-model="circleMessage.operatorsId" ng-selected="{{item.name}}">
+            </label>
+            {{item.name}}
+        </ion-item>-->
+
+        <ion-checkbox ng-repeat="item in operators"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked" 
+                      class="checkbox-assertive" >
+          {{ item.name }}
+        </ion-checkbox>
+
+        <!--<li class="item item-checkbox">
+           <label class="checkbox checkbox-assertive">
+             <input type="checkbox" ng-model="filter.leaseSaleType" ng-selected="selected">
+           </label>
+           Claro
+        </li>
+        <li class="item item-checkbox">
+           <label class="checkbox checkbox-assertive">
+             <input type="checkbox" ng-model="filter.leaseAntiType">
+           </label>
+           Movistar
+        </li>-->
+        
+      </div>
+      <div class="padding">
+        <button class="button button-block button-energized" ng-disabled="messageForm.$invalid">Preview</button>
+
+      </div>
+
+    </form>
+
+  </ion-content>
+
+</ion-modal-view>
